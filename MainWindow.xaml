@@ -1,0 +1,42 @@
+﻿<Window x:Class="YourNamespace.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YourNamespace"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая панель для списка папок и заметок -->
+        <StackPanel Grid.Column="0" Background="#F0F0F0" >
+            <TextBlock Text="My daily tasks" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+            <!-- TreeView для папок и заметок -->
+            <TreeView x:Name="FoldersTreeView" Margin="0,0,0,10">
+                <!-- Пример структуры папок и заметок -->
+                <TreeViewItem Header="Название папки" IsExpanded="True">
+                    <TreeViewItem Header="Запись 1"/>
+                    <TreeViewItem Header="Запись 2"/>
+                    <TreeViewItem Header="Запись 3"/>
+                    <TreeViewItem Header="Запись 4"/>
+                </TreeViewItem>
+            </TreeView>
+
+            <!-- Кнопки для создания папок и заметок -->
+            <Button Content="Создать новую папку" Click="CreateFolder_Click" Margin="0,5,0,0"/>
+            <Button Content="Создать новую запись" Click="CreateNote_Click" Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <!-- Правая часть окна для отображения содержимого заметок (по необходимости) -->
+        <TextBlock Grid.Column="1" Text="Выберите папку или запись" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+        <StackPanel Grid.Column="1" >
+            <TextBox x:Name="NoteContentTextBox" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" 
+                     TextWrapping="Wrap" IsEnabled="False" TextChanged="NoteContentTextBox_TextChanged"/>
+        </StackPanel>
+    </Grid>
+</Window>
